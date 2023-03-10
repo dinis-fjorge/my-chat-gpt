@@ -31,7 +31,7 @@ Run `npm install` from the base directory (in terminal, git bash, powershell, et
 
 You may need to install Angular CLI version 15.2.1 seperately. If you have issues with the following step.
 
-Run `npm run startFull` to run both the frontend and the backend server from one command. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the front end files.
+Follow the guides below to start the frontend and backend servers.
 
 ## Running just the Backend Server
 
