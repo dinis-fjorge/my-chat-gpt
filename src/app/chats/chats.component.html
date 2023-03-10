@@ -1,0 +1,23 @@
+<navbar></navbar>
+<div class="button-container">
+    <ng-container>
+        <br>
+        <h4 class="centered">Select or create a chat thread below to begin</h4>
+        <br>
+    </ng-container>
+    <div class="centered">
+        <button type="button" class="btn btn-lg btn-info btn-rounded side-chat-button" (click)="newChat()">
+            + New Chat
+        </button>
+    </div>
+    <div *ngFor="let chatContainer of chatContainers" class="centered">
+        <button type="button" class="btn btn-lg btn-primary btn-rounded side-chat-button" (click)="openChat(chatContainer)">
+            {{chatContainer.name}}
+        </button>
+        <a tabindex="0" role="button" class="btn btn-lg btn-danger btn-rounded side-chat-delete-button"
+            trigger="focus" [mdbPopover]="deleteConfirmation" [delayHide]="100">
+            <i class="fas fa-trash"></i>
+            <ng-template #deleteConfirmation>Are you sure you want to delete this chat?<hr/><button type="button" class="btn btn-danger" (click)="deleteContainer(chatContainer)">Yes</button></ng-template>
+        </a>
+    </div>
+</div>

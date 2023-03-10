@@ -1,0 +1,44 @@
+<chat-navbar *ngIf="chatContainer" [chatContainer]="chatContainer!!" (openSettings)="toggleSettings()"></chat-navbar>
+<div class="chatContainerContainer" *ngIf="chatContainer">
+	<div class="container chatContainer">
+		<ng-container *ngIf="!settingsOpen && settings && chatContainer">
+			<div class="rowsContainer" *ngIf="chatRows.length" #chatScroll>
+				<br>
+				<chat-row *ngFor="let chatRow of chatRows" [chatRow]="chatRow" (reloadResponseToMessage)="reloadResponseToMessage($event)" 
+					(triggerAI)="triggerAI()" (refreshMessages)="refreshMessages()" [settings]="settings"></chat-row>
+			</div>
+			<div *ngIf="!chatRows.length">
+				<br>
+				<br>
+				<br>
+				<h3>Submit the system message to get started</h3>
+				<hr>
+				<p>The system message is meant to inform ChatGPT on what it's purpose is in this conversation.  The default ChatGPT system message is:</p>
+				<h5>You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.</h5>
+				<br>
+				<p>Copy and paste this into the text box and submit if you want the default behavior.  Otherwise craft a prompt that properly informs the AI of what it's purpose will be and how you want it to respond in various situations.</p>
+				<hr>
+				<p>After sending this system message you will have the choice of whether you trigger an AI response first, or if you want to begin with a request first.  At any point you can trigger an AI response by submitting an empty text field.  In many situations, like the start and after edits, where ChatGPT normally automatically triggers an AI response, I have chosen to make that a manual process so the user has more flexibility.</p>
+				<hr>
+				<p>Additionally, I have used the name displayed in the top right of the screen to inform the AI of the user's name.  If you want the AI to refer to you as something else, change your name in the settings or explicitly state that you want it to refer to you by something else.  I will introduce a settings toggle to disable this in a future update.</p>
+				<hr>
+			</div>
+			<div class="inputArea">
+				<!-- <div class="container"> -->
+					<mdb-form-control class="form-white">
+						<textarea mdbInput class="form-control inputTextArea" id="textAreaExample" rows="4" (keydown.enter)="hitEnter($event)" [(ngModel)]="message" [disabled]="aiResponding"></textarea>
+						<label mdbLabel class="form-label" for="textAreaExample">{{aiResponding?'AI Response Generating...':'Message'}}</label>
+						<button type="button" class="btn btn-primary btn-floating chatSendButton" (click)="sendMessage()" *ngIf="!aiResponding">
+							<i class="fas fa-paper-plane"></i>
+						</button>
+						<button type="button" class="btn btn-primary btn-floating chatImageButton" (click)="getImage()" *ngIf="!aiResponding">
+							<i class="fas fa-image"></i>
+						</button>
+					</mdb-form-control>
+				<!-- </div> -->
+			</div>
+		</ng-container>
+		<chat-settings #settingsEl [hidden]="!settingsOpen" [chatContainer]="chatContainer"
+			(refreshMessages)="refreshMessages()" (closeSettings)="toggleSettings()"></chat-settings>
+	</div>
+</div>

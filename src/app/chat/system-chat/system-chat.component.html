@@ -1,0 +1,30 @@
+<div class="cardContainer">
+    <div class="buttonContainer">
+        <button *ngIf="!isEditting" type="button" class="btn btn-info btn-floating floating-button" (click)="regenerateResponse()">
+            <i class="fas fa-repeat"></i>
+        </button>
+        <button *ngIf="!isEditting" type="button" class="btn btn-info btn-floating floating-button" (click)="editMessage()">
+            <i class="fas fa-edit"></i>
+        </button>
+    </div>
+    <div class="card text-white bg-info mb-3" [style]="'background-color: ' + backgroundColor + ' !important;'">
+        <div class="card-body message-text" *ngIf="!isEditting" [innerHTML]="chatMessage.message"></div>
+        <textarea matInput *ngIf="isEditting"
+            [(ngModel)]="editText"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="1000"></textarea>
+    </div>
+</div>
+<div class="" *ngIf="isEditting">
+	<button type="button" class="btn btn-info floating-button" (click)="saveEdit()">
+		Save
+	</button>
+	<button type="button" class="btn btn-info floating-button" (click)="saveEditOriginal()">
+		Save Original
+	</button>
+	<button type="button" class="btn btn-info floating-button" (click)="cancelEdit()">
+		Cancel
+	</button>
+</div>

@@ -1,0 +1,26 @@
+.alignRight {
+    text-align: right;
+    width: 100%;
+    display: block;
+}
+.alignLeft {
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+
+.chatRow {
+    /* margin-bottom: 1rem; */
+}
+
+.chatBottom {
+    min-height: 1.25rem;
+}
+
+img {
+    width: 100%;
+    max-width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
