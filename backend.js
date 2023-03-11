@@ -215,6 +215,9 @@ app.get('/api/getNewAIMessage', (req, res) => {
 });
 
 function getChatGPTContainers() {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   if(!fs.existsSync("./db/chatGPTContainers.json", fs.R_OK)) {
     fs.writeFileSync('./db/chatGPTContainers.json', "[]");
   }
@@ -223,11 +226,17 @@ function getChatGPTContainers() {
 }
 
 function saveChatGPTContainers(containers) {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   const data = JSON.stringify(containers);
   fs.writeFileSync('./db/chatGPTContainers.json', data);
 }
 
 function getChatGPTMessages() {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   if(!fs.existsSync("./db/chatGPTMessages.json", fs.R_OK)) {
     fs.writeFileSync('./db/chatGPTMessages.json', "[]");
   }
@@ -236,11 +245,17 @@ function getChatGPTMessages() {
 }
 
 function saveChatGPTMessages(messages) {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   const data = JSON.stringify(messages);
   fs.writeFileSync('./db/chatGPTMessages.json', data);
 }
 
 function getChatGPTSettings() {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   if(!fs.existsSync("./db/chatGPTSettings.json", fs.R_OK)) {
     fs.writeFileSync('./db/chatGPTSettings.json', "{}");
   }
@@ -257,6 +272,9 @@ function getDefaultChatGPTSettings() {
 }
 
 function saveChatGPTSettings(settings) {
+  if (!fs.existsSync("./db")){
+    fs.mkdirSync("./db");
+  }
   const data = JSON.stringify(settings);
   fs.writeFileSync('./db/chatGPTSettings.json', data);
 }
