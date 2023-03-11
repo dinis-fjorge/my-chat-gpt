@@ -1,7 +1,7 @@
 <chat-navbar *ngIf="chatContainer" [chatContainer]="chatContainer!!" (openSettings)="toggleSettings()"></chat-navbar>
 <div class="chatContainerContainer" *ngIf="chatContainer">
 	<div class="container chatContainer">
-		<ng-container *ngIf="!settingsOpen && settings && chatContainer">
+		<ng-container *ngIf="!settingsOpen && settings && chatContainer && settings.openAiApiKey">
 			<div class="rowsContainer" *ngIf="chatRows.length" #chatScroll>
 				<br>
 				<chat-row *ngFor="let chatRow of chatRows" [chatRow]="chatRow" (reloadResponseToMessage)="reloadResponseToMessage($event)" 
@@ -38,6 +38,11 @@
 				<!-- </div> -->
 			</div>
 		</ng-container>
+		<div *ngIf="!settingsOpen && settings && chatContainer && !settings.openAiApiKey">
+			<br>
+			<br>
+			<h3>Enter your Open AI API Key in the Settings page to begin</h3>
+		</div>
 		<chat-settings #settingsEl [hidden]="!settingsOpen" [chatContainer]="chatContainer"
 			(refreshMessages)="refreshMessages()" (closeSettings)="toggleSettings()"></chat-settings>
 	</div>

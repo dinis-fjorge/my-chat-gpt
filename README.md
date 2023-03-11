@@ -1,6 +1,26 @@
 # my-chat-gpt
 A locally run Web UI for GPT 3.5 aka ChatGPT's API
 
+## Quick Start
+
+Install Node.js from their website if you don't have it installed
+
+Run `npm install` from the base directory (in terminal, git bash, powershell, etc.  Lookup a tutorial for node if you're not familiar with it)
+
+Run `npm i @angular/cli@15.2.1` to install Angular CLI (or lookup the command for your respective Operating System)
+
+Run `npm i express` to install Express.js (or lookup the command for your respective Operating System)
+
+Follow the guides below to start the frontend and backend servers.
+
+## Running just the Backend Server
+
+Run `npm run startBackend` for the backend server. The application will not reload until you close the server and restart it.
+
+## Running just the Frontend Web UI Server
+
+Run `npm run startFrontend` for the frontend server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
 ## Start and switch between multiple chat conversations
 ![chats](https://github.com/michaelnutt02/my-chat-gpt/blob/master/readme_images/chats.PNG?raw=true)
 
@@ -24,22 +44,6 @@ Context/Memories is another technique for keeping track of conversations that ex
 
 ## Prompt engineer better prompts for summarization, memory generation, and image prompt request
 ![chats](https://github.com/michaelnutt02/my-chat-gpt/blob/master/readme_images/overall-settings.PNG?raw=true)
-
-## Quick Start
-
-Run `npm install` from the base directory (in terminal, git bash, powershell, etc.  Lookup a tutorial for node if you're not familiar with it)
-
-You may need to install Angular CLI version 15.2.1 seperately. If you have issues with the following step.
-
-Follow the guides below to start the frontend and backend servers.
-
-## Running just the Backend Server
-
-Run `npm run startBackend` for the backend server. The application will not reload until you close the server and restart it.
-
-## Running just the Frontend Web UI Server
-
-Run `npm run startFrontend` for the frontend server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Angular Development Info
 

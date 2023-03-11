@@ -1,5 +1,9 @@
 <navbar></navbar>
 <hr>
+<button type="button" class="btn btn-primary px-3 me-2" (click)="saveSettings()">
+	Save Settings
+</button>
+<hr>
 Use Name: 
 <input type="checkbox" [(ngModel)]="useName" />
 &nbsp;(If selected, all AI message generation will include a short system message telling the AI your name)
@@ -118,8 +122,15 @@ Use Name:
         cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="100"></textarea>
 </div>
-<hr>
-<button type="button" class="btn btn-primary px-3 me-2" (click)="saveSettings()">
-	Save Settings
-</button>
+<br>
+<br>
+<h5>Generate Image Prompt Text</h5>
+<div class="card text-white bg-info mb-3">
+    <textarea matInput
+        [(ngModel)]="imagePromptInstructionText"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="100"></textarea>
+</div>
 <hr>
