@@ -59,11 +59,14 @@
     <div class="w-full xl:w-3/5" *ngIf="results.length === 0">
       <img
         class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-xl"
-        src="./assets/photomontage.png"
-      />
+        src="./assets/photomontage.png"/>
     </div>
-    <div class="w-full xl:w-3/5" *ngFor="let url of results">
-      <img [src]="url" />
+    <div class="w-full xl:w-3/5 snap-x snap-proximity">
+      <div class="relative w-full flex snap-x snap-proximity overflow-x-auto" *ngFor="let url of results">
+        <div class="snap-center shrink-0">
+          <img [src]="url" class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-xl" />
+        </div>
+      </div>
     </div>
     <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
       <a class="text-gray-500 no-underline hover:no-underline" href="#"
