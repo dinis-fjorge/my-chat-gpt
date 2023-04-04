@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
   aiResponding: boolean = false;
   settingsOpen: boolean = false;
   settings: any = null;
-
+  currentYear: number = new Date().getFullYear();
   constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute, private deviceService: DeviceDetectorService) {}
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit {
   scrollToBottom(): void {
       try {
           this.chatScroll.nativeElement.scrollTop = this.chatScroll.nativeElement.scrollHeight;
-      } catch(err) { }                 
+      } catch(err) { }
   }
 
   refreshContainer() {

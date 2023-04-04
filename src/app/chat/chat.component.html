@@ -1,49 +1,40 @@
-<chat-navbar *ngIf="chatContainer" [chatContainer]="chatContainer!!" (openSettings)="toggleSettings()"></chat-navbar>
-<div class="chatContainerContainer" *ngIf="chatContainer">
-	<div class="container chatContainer">
-		<ng-container *ngIf="!settingsOpen && settings && chatContainer && settings.openAiApiKey">
-			<div class="rowsContainer" *ngIf="chatRows.length" #chatScroll>
-				<br>
-				<chat-row *ngFor="let chatRow of chatRows" [chatRow]="chatRow" (reloadResponseToMessage)="reloadResponseToMessage($event)" 
-					(triggerAI)="triggerAI()" (refreshMessages)="refreshMessages()" [settings]="settings"></chat-row>
-			</div>
-			<div *ngIf="!chatRows.length">
-				<br>
-				<br>
-				<br>
-				<h3>Submit the system message to get started</h3>
-				<hr>
-				<p>The system message is meant to inform ChatGPT on what it's purpose is in this conversation.  The default ChatGPT system message is:</p>
-				<h5>You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.</h5>
-				<br>
-				<p>Copy and paste this into the text box and submit if you want the default behavior.  Otherwise craft a prompt that properly informs the AI of what it's purpose will be and how you want it to respond in various situations.</p>
-				<hr>
-				<p>After sending this system message you will have the choice of whether you trigger an AI response first, or if you want to begin with a request first.  At any point you can trigger an AI response by submitting an empty text field.  In many situations, like the start and after edits, where ChatGPT normally automatically triggers an AI response, I have chosen to make that a manual process so the user has more flexibility.</p>
-				<hr>
-				<p>Additionally, I have used the name displayed in the top right of the screen to inform the AI of the user's name.  If you want the AI to refer to you as something else, change your name in the settings or explicitly state that you want it to refer to you by something else.  I will introduce a settings toggle to disable this in a future update.</p>
-				<hr>
-			</div>
-			<div class="inputArea">
-				<!-- <div class="container"> -->
-					<mdb-form-control class="form-white">
-						<textarea mdbInput class="form-control inputTextArea" id="textAreaExample" rows="4" (keydown.enter)="hitEnter($event)" [(ngModel)]="message" [disabled]="aiResponding"></textarea>
-						<label mdbLabel class="form-label" for="textAreaExample">{{aiResponding?'AI Response Generating...':'Message'}}</label>
-						<button type="button" class="btn btn-primary btn-floating chatSendButton" (click)="sendMessage()" *ngIf="!aiResponding">
-							<i class="fas fa-paper-plane"></i>
-						</button>
-						<button type="button" class="btn btn-primary btn-floating chatImageButton" (click)="getImage()" *ngIf="!aiResponding">
-							<i class="fas fa-image"></i>
-						</button>
-					</mdb-form-control>
-				<!-- </div> -->
-			</div>
-		</ng-container>
-		<div *ngIf="!settingsOpen && settings && chatContainer && !settings.openAiApiKey">
-			<br>
-			<br>
-			<h3>Enter your Open AI API Key in the Settings page to begin</h3>
-		</div>
-		<chat-settings #settingsEl [hidden]="!settingsOpen" [chatContainer]="chatContainer"
-			(refreshMessages)="refreshMessages()" (closeSettings)="toggleSettings()"></chat-settings>
-	</div>
+<div class="h-screen pb-14 bg-right bg-cover">
+  <!--Nav-->
+  <div class="w-full container mx-auto p-6">
+    <div class="w-full flex items-center justify-between">
+      <a href="#" class="text-center">
+        <p class="font-bold uppercase text-3xl text-purple-800">MONTAGE</p>
+        <p class="font-semibold">Make your life funnier</p>
+      </a>
+    </div>
+  </div>
+  <div class="container md:pt-14 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+      <h1 class="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">Generate the BEST photo-montage ever</h1>
+      <p class="leading-normal text-base md:text-2xl mb-4 text-center md:text-left slide-in-bottom-subtitle">It is very easy, you only have to click on the button below</p>
+      <div class="flex items-center justify-center w-full">
+        <div>
+          <button class="px-4 py-2 font-semibold text-sm bg-blue-600 text-xl text-white rounded-full shadow-sm">Upload your images</button>
+        </div>
+      </div>
+    </div>
+    <div class="w-full xl:w-3/5 overflow-hidden rounded-3xl">
+      <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="./assets/photomontage.png">
+    </div>
+    <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+      <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; Montage <span>{{currentYear}}</span></a>
+    </div>
+  </div>
 </div>
+
+<!-- Animation CSS-->
+<style>
+  .slide-in-bottom{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both}
+  .slide-in-bottom-h1{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .5s both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .5s both}
+  .slide-in-bottom-subtitle{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .75s both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) .75s both}
+  .fade-in{-webkit-animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) 1s both;animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) 1s both}
+  .bounce-top-icons{-webkit-animation:bounce-top .9s 1s both;animation:bounce-top .9s 1s both}
+  @-webkit-keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
+  @-webkit-keyframes bounce-top{0%{-webkit-transform:translateY(-45px);transform:translateY(-45px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{-webkit-transform:translateY(-24px);transform:translateY(-24px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}65%{-webkit-transform:translateY(-12px);transform:translateY(-12px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}82%{-webkit-transform:translateY(-6px);transform:translateY(-6px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}93%{-webkit-transform:translateY(-4px);transform:translateY(-4px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}25%,55%,75%,87%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}}@keyframes bounce-top{0%{-webkit-transform:translateY(-45px);transform:translateY(-45px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{-webkit-transform:translateY(-24px);transform:translateY(-24px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}65%{-webkit-transform:translateY(-12px);transform:translateY(-12px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}82%{-webkit-transform:translateY(-6px);transform:translateY(-6px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}93%{-webkit-transform:translateY(-4px);transform:translateY(-4px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}25%,55%,75%,87%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}}
+  @-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
+</style>
