@@ -26,7 +26,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     FormsModule,
     TextFieldModule,
-    ColorPickerModule,
-    CarouselModule
+    ColorPickerModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
