@@ -21,36 +21,16 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { SettingsComponent } from './settings/settings.component';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
-import { NavbarComponent } from './navBars/navbar/navbar.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ChatsComponent } from './chats/chats.component';
-import { ChatComponent } from './chat/chat.component';
-import { ChatRowComponent } from './chat/chat-row/chat-row.component';
-import { UserChatComponent } from './chat/user-chat/user-chat.component';
-import { SystemChatComponent } from './chat/system-chat/system-chat.component';
-import { AssistantChatComponent } from './chat/assistant-chat/assistant-chat.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { ChatNavbarComponent } from './navBars/chat-navbar/chat-navbar.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { ChatSettingsComponent } from './chat/chat-settings/chat-settings.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SettingsComponent,
-    NavbarComponent,
-    ChatsComponent,
-    ChatComponent,
-    ChatRowComponent,
-    UserChatComponent,
-    SystemChatComponent,
-    AssistantChatComponent,
-    ChatNavbarComponent,
-    ChatSettingsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -73,11 +53,11 @@ import { ChatSettingsComponent } from './chat/chat-settings/chat-settings.compon
     MdbTooltipModule,
     MdbValidationModule,
     RouterModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     TextFieldModule,
-    ColorPickerModule
+    ColorPickerModule,
+    CarouselModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

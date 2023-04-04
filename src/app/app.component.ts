@@ -9,6 +9,8 @@ import { HttpService } from './services/http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  currentYear: number = new Date().getFullYear();
+
   constructor(){}
   ngOnInit() {
   }
